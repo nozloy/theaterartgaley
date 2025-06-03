@@ -13,6 +13,9 @@ export default {
 	],
 	theme: {
 		extend: {
+			screens: {
+				iphone: '390px', // имя: значение
+			},
 			animation: {
 				aurora: 'aurora 60s linear infinite',
 			},

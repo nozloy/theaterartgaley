@@ -10,7 +10,7 @@ export const Producer: React.FC<Props> = ({ className }) => {
 	return (
 		<div
 			className={cn(
-				' w-[180px] relative select-none flex flex-col gap-2 items-center justify-center border border-border shadow-sm shadow-red-950 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer rounded-[30px] p-2  bg-background  active:shadow-red-600 active:scale-95',
+				'w-[160px] iphone:w-[180px] relative select-none flex flex-col gap-2 items-center justify-center border border-border shadow-sm shadow-red-950 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer rounded-[30px]  bg-background  active:shadow-red-600 active:scale-95',
 				className,
 			)}
 		>

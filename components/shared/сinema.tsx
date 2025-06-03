@@ -22,7 +22,7 @@ export const Cinema: React.FC<Props> = ({ className }) => {
 				<div
 					tabIndex={0}
 					className={cn(
-						' h-[130px] w-[180px] relative flex flex-col gap-0 items-center justify-center rounded-[30px] bg-background shadow-sm px-4 border border-border shadow-red-950 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer active:shadow-red-600 active:scale-95 ',
+						' h-[130px] w-[160px] iphone:w-[180px] relative flex flex-col gap-0 items-center justify-center rounded-[30px] bg-background shadow-sm px-4 border border-border shadow-red-950 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer active:shadow-red-600 active:scale-95 ',
 						className,
 					)}
 				>
@@ -33,9 +33,9 @@ export const Cinema: React.FC<Props> = ({ className }) => {
 						height={150}
 						className='z-10 absolute -top-5 '
 					/>
-					<div className='absolute bottom-2 flex flex-row items-center justify-center'>
-						<Label className='text-foreground  font-bold text-md'>Мы в </Label>
-						<span className='mx-0.5'></span>
+					<div className='absolute bottom-2 flex flex-row items-center justify-center gap-1'>
+						<Label className='text-foreground font-bold text-md'>Мы в </Label>
+
 						<Label className='text-red-600 font-bold text-md'>кино</Label>
 					</div>
 				</div>

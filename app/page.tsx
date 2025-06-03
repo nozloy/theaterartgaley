@@ -11,12 +11,12 @@ import { Cinema } from '@/components/shared/сinema'
 export default function Home() {
 	return (
 		<div className='min-h-dvh w-full mb-24'>
-			<div className='flex flex-col items-center justify-start p-4 gap-2 max-w-md mx-auto h-svh bg-background '>
+			<div className='w-full flex flex-col items-center justify-start p-4 gap-2 max-w-md mx-auto h-svh bg-background '>
 				<Header />
 				<IntroBlock />
 				<Countries />
-				<div className='flex flex-row gap-1 w-full items-center justify-between'>
-					<div className='mt-4 flex flex-col items-center justify-start gap-4'>
+				<div className='flex flex-row gap-4 w-full items-center justify-between'>
+					<div className='w-full mt-4 flex flex-col items-center justify-start gap-4'>
 						<Producer />
 						<Socials />
 					</div>

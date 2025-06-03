@@ -21,12 +21,12 @@ export const Socials: React.FC<Props> = ({ className }) => {
 		<div className={cn('w-full mt-4', className)}>
 			<Drawer>
 				<DrawerTrigger asChild>
-					<div className='w-full text-center text-foreground font-bold text-xl px-4 py-2 rounded-sm shadow-sm shadow-red-500 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer active:shadow-red-600 active:scale-95'>
+					<div className='w-[160px] iphone:w-[180px] text-center text-foreground font-bold text-xl px-4 py-2 rounded-sm shadow-sm shadow-red-500 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer active:shadow-red-600 active:scale-95'>
 						Контакты
 					</div>
 				</DrawerTrigger>
 				<DrawerContent>
-					<div className='mx-auto w-full max-w-sm'>
+					<div className='mx-auto  max-w-sm'>
 						<DrawerHeader>
 							<DrawerTitle>Контакты</DrawerTitle>
 							<DrawerDescription>и социальные сети</DrawerDescription>

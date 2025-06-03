@@ -17,8 +17,12 @@ export const Kazan: React.FC<Props> = ({ className, ...props }) => {
 				height={150}
 				className='z-10 absolute -top-6 rounded-3xl drop-shadow contrast-125 '
 			/>
-			<Label className='text-foreground font-bold text-md'>
+
+			<Label className='hidden md:block text-foreground font-bold text-md'>
 				Россия - Казань
+			</Label>
+			<Label className='block md:hidden text-foreground font-bold text-lg'>
+				Казань
 			</Label>
 		</div>
 	)
