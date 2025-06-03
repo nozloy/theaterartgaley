@@ -1,12 +1,12 @@
 'use client'
 
-import { BuyTickets } from '@/components/shared/buy-tickets'
+import { Afisha } from '@/components/shared/afisha'
 import { Countries } from '@/components/shared/countries'
 import { Header } from '@/components/shared/header'
 import { IntroBlock } from '@/components/shared/intro-block'
 import { Producer } from '@/components/shared/producer'
+import { Socials } from '@/components/shared/socials'
 import { Cinema } from '@/components/shared/сinema'
-import { ArrowRightCircle } from 'lucide-react'
 
 export default function Home() {
 	return (
@@ -16,14 +16,17 @@ export default function Home() {
 				<IntroBlock />
 				<Countries />
 				<div className='flex flex-row gap-1 w-full items-center justify-between'>
-					<Producer />
-					<div className='h-full flex flex-col gap-4 items-start justify-start'>
-						<BuyTickets />
+					<div className='mt-4 flex flex-col items-center justify-start gap-4'>
+						<Producer />
+						<Socials />
+					</div>
+					<div className='h-full flex flex-col gap-10 items-start justify-start'>
+						<Afisha />
 						<Cinema />
-						<div className='text-foreground font-bold text-md py-2 px-4 w-[180px] rounded-3xl items-center justify-between bg-background border border-border shadow-sm shadow-red-950 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer active:shadow-red-600 active:scale-95 flex flex-row gap-1'>
+						{/* <div className='text-foreground font-bold text-md py-2 px-4 w-[180px] rounded-3xl items-center justify-between bg-background border border-border shadow-sm shadow-red-950 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer active:shadow-red-600 active:scale-95 flex flex-row gap-1'>
 							Состав труппы
 							<ArrowRightCircle size={20} className='text-red-600' />
-						</div>
+						</div> */}
 					</div>
 				</div>
 
