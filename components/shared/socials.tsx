@@ -11,6 +11,8 @@ import {
 } from '@/components/ui/drawer'
 import { Button } from '../ui/button'
 import { cn } from '@/lib/utils'
+import { Label } from '../ui/label'
+import Image from 'next/image'
 
 interface Props {
 	className?: string
@@ -18,11 +20,25 @@ interface Props {
 
 export const Socials: React.FC<Props> = ({ className }) => {
 	return (
-		<div className={cn('w-full mt-4', className)}>
+		<div className={cn('', className)}>
 			<Drawer>
 				<DrawerTrigger asChild>
-					<div className='w-[160px] iphone:w-[180px] text-center text-foreground font-bold text-xl px-4 py-2 rounded-sm shadow-sm shadow-red-500 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer active:shadow-red-600 active:scale-95'>
-						Контакты
+					<div
+						className={cn(
+							'h-[110px] w-[160px] iphone:w-[180px] relative flex flex-col gap-0 items-center justify-end rounded-[30px] bg-background shadow-sm  pb-2 mt-4 border border-border shadow-red-950 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer active:shadow-red-600 active:scale-95',
+							className,
+						)}
+					>
+						<Image
+							src='/images/contacts.png'
+							alt='ArtGaley'
+							width={120}
+							height={120}
+							className='z-10 absolute -top-4'
+						/>
+						<Label className='text-foreground font-bold text-xl'>
+							Контакты
+						</Label>
 					</div>
 				</DrawerTrigger>
 				<DrawerContent>
@@ -32,18 +48,21 @@ export const Socials: React.FC<Props> = ({ className }) => {
 							<DrawerDescription>и социальные сети</DrawerDescription>
 						</DrawerHeader>
 						<div className='w-full flex flex-col items-center justify-center gap-2 p-4 *:w-full *:text-xl *:h-12'>
-							<Button variant='secondary' className=''>
+							<Button
+								variant='secondary'
+								onClick={() => window.open('https://t.me/artgaleyto', '_blank')}
+							>
 								Telegram
 							</Button>
-							<Button variant='outline' className=' '>
+							<Button
+								variant='outline'
+								onClick={() => window.open('https://vk.com/artgaley', '_blank')}
+							>
 								VK
 							</Button>
-							<Button variant='outline' className=' '>
+							{/* <Button variant='outline' className=' '>
 								Instagram
-							</Button>
-							<Button variant='outline' className=' '>
-								YouTube
-							</Button>
+							</Button> */}
 							<Button variant='outline' className=' '>
 								WhatsApp
 							</Button>

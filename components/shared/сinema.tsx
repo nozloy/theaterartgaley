@@ -10,7 +10,6 @@ import {
 	SheetTrigger,
 } from '@/components/ui/sheet'
 import { Calendar } from 'lucide-react'
-import { Label } from '../ui/label'
 interface Props {
 	className?: string
 }
@@ -22,22 +21,22 @@ export const Cinema: React.FC<Props> = ({ className }) => {
 				<div
 					tabIndex={0}
 					className={cn(
-						' h-[130px] w-[160px] iphone:w-[180px] relative flex flex-col gap-0 items-center justify-center rounded-[30px] bg-background shadow-sm px-4 border border-border shadow-red-950 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer active:shadow-red-600 active:scale-95 ',
+						'relative w-[160px] iphone:w-[180px]  select-none flex flex-col gap-2 items-center justify-center border border-border shadow-sm shadow-red-950 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer rounded-[20px] bg-background active:shadow-red-600 active:scale-95',
 						className,
 					)}
 				>
 					<Image
-						src='/images/cinema.png'
+						src='/images/image-good4.png'
 						alt='ArtGaley'
-						width={150}
-						height={150}
-						className='z-10 absolute -top-5 '
+						width={200}
+						height={200}
+						className='z-10 rounded-3xl  p-0'
 					/>
-					<div className='absolute bottom-2 flex flex-row items-center justify-center gap-1'>
-						<Label className='text-foreground font-bold text-md'>Мы в </Label>
+					{/* <div className='z-30 absolute top-2 flex flex-row items-center justify-center gap-1'>
+						<Label className='text-foreground font-bold text-md'>Наши </Label>
 
-						<Label className='text-red-600 font-bold text-md'>кино</Label>
-					</div>
+						<Label className='text-red-600 font-bold text-md'>достижения</Label>
+					</div> */}
 				</div>
 			</SheetTrigger>
 			<SheetContent className='w-full overflow-y-auto max-h-dvh'>

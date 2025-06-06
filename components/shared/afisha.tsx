@@ -29,13 +29,13 @@ export const Afisha: React.FC<Props> = ({ className }) => {
 					)}
 				>
 					<Image
-						src='/images/tickets.png'
+						src='/images/tickets_small.png'
 						alt='ArtGaley'
-						width={150}
-						height={150}
-						className='z-10 absolute -top-12 scale-90'
+						width={120}
+						height={120}
+						className='z-10 absolute -top-12'
 					/>
-					<Label className='text-foreground font-bold text-md'>Билеты</Label>
+					<Label className='text-foreground font-bold text-xl'>Афиша</Label>
 				</div>
 			</DrawerTrigger>
 			<DrawerContent className=''>
