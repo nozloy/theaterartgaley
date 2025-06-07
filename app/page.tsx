@@ -8,7 +8,7 @@ import { NextShow } from '@/components/shared/next_show'
 import { Producer } from '@/components/shared/producer'
 import { TrapForLonelyMan } from '@/components/shared/shows/trap_for_ lonely_man'
 import { Socials } from '@/components/shared/socials'
-import { Cinema } from '@/components/shared/сinema'
+import { Band } from '@/components/shared/band'
 import { cn } from '@/lib/utils'
 import { useState } from 'react'
 
@@ -44,7 +44,7 @@ export default function Home() {
 				<div className='flex flex-row gap-4 items-center justify-between w-full'>
 					<div className='w-full flex flex-col gap-8 items-start justify-start'>
 						<Afisha />
-						<Cinema />
+						<Band />
 					</div>
 					<div className='w-full mt-4 flex flex-col items-end justify-between gap-6'>
 						<Producer />

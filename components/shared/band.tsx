@@ -14,7 +14,7 @@ interface Props {
 	className?: string
 }
 
-export const Cinema: React.FC<Props> = ({ className }) => {
+export const Band: React.FC<Props> = ({ className }) => {
 	return (
 		<Sheet>
 			<SheetTrigger>
@@ -26,7 +26,7 @@ export const Cinema: React.FC<Props> = ({ className }) => {
 					)}
 				>
 					<Image
-						src='/images/image-good4.png'
+						src='/images/band.png'
 						alt='ArtGaley'
 						width={200}
 						height={200}

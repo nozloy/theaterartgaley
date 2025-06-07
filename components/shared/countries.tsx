@@ -13,6 +13,7 @@ import {
 	DrawerTitle,
 	DrawerTrigger,
 } from '@/components/ui/drawer'
+import Image from 'next/image'
 
 interface Props {
 	className?: string
@@ -20,14 +21,21 @@ interface Props {
 
 export const Countries: React.FC<Props> = ({ className }) => {
 	const style =
-		'h-[110px] w-[160px] iphone:w-[180px] relative flex flex-col gap-0 items-center justify-end rounded-[30px] bg-background shadow-sm p-4 pb-2 border border-border shadow-red-950 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer active:shadow-red-600 active:scale-95'
+		'h-[80px] iphone:h-[100px] w-[110px] iphone:w-[180px] relative flex flex-col gap-0 items-center justify-end rounded-[30px] bg-background shadow-sm p-4 pb-2  shadow-foreground hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer active:shadow-red-600 active:scale-95'
 	return (
 		<div
 			className={cn(
-				'flex flex-row gap-4 items-center justify-between w-full select-none mt-8',
+				'flex flex-row gap-4 items-center justify-between w-full select-none mt-8 border border-transparent rounded-[30px]',
 				className,
 			)}
 		>
+			<Image
+				src='/images/history_of_theater.png'
+				alt='ArtGaley'
+				width={100}
+				height={100}
+				className='z-30 '
+			/>
 			<Drawer>
 				<DrawerTrigger asChild>
 					<Antalya className={style} />

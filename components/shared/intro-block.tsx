@@ -15,11 +15,7 @@ export const IntroBlock: React.FC<Props> = ({ className }) => {
 		>
 			<h1>
 				Добро пожаловать в <strong>Art Galey</strong> — творческое объединение,
-				создающее{' '}
-				<strong>
-					спектакли и постановки по всему миру и снимающееся в кино
-				</strong>
-				.
+				создающее <strong>спектакли и постановки по всему миру</strong>.
 			</h1>
 		</div>
 	)

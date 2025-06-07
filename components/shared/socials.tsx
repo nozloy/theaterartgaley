@@ -50,23 +50,31 @@ export const Socials: React.FC<Props> = ({ className }) => {
 						<div className='w-full flex flex-col items-center justify-center gap-2 p-4 *:w-full *:text-xl *:h-12'>
 							<Button
 								variant='secondary'
-								onClick={() => window.open('https://t.me/artgaleyto', '_blank')}
+								onClick={() => window.open('https://t.me/artgaley', '_blank')}
 							>
-								Telegram
+								Написать в Telegram
 							</Button>
 							<Button
 								variant='outline'
 								onClick={() => window.open('https://vk.com/artgaley', '_blank')}
 							>
-								VK
+								Группа в VK
 							</Button>
 							{/* <Button variant='outline' className=' '>
 								Instagram
 							</Button> */}
-							<Button variant='outline' className=' '>
+							<Button
+								variant='outline'
+								onClick={() =>
+									window.open('https://wa.me/79656071642', '_blank')
+								}
+							>
 								WhatsApp
 							</Button>
-							<Button variant='destructive' className=' '>
+							<Button
+								variant='destructive'
+								onClick={() => window.open('tel:+79656071642', '_blank')}
+							>
 								Позвонить
 							</Button>
 						</div>
