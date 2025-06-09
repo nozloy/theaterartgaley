@@ -9,7 +9,7 @@ export const IntroBlock: React.FC<Props> = ({ className }) => {
 	return (
 		<div
 			className={cn(
-				'relative w-full text-foreground text-center text-xl p-2 border border-dashed border-border rounded-xl  bg-background',
+				'relative w-full text-foreground text-center text-xl p-2 border border-dashed border-border rounded-xl   bg-background bg-opacity/5 backdrop-blur-md',
 				className,
 			)}
 		>

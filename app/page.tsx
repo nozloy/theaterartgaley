@@ -11,6 +11,7 @@ import { Socials } from '@/components/shared/socials'
 import { Band } from '@/components/shared/band'
 import { cn } from '@/lib/utils'
 import { useState } from 'react'
+import { Lights } from '@/components/shared/lights'
 
 export default function Home() {
 	const [modal_trap, setModalTrap] = useState(false)
@@ -20,6 +21,7 @@ export default function Home() {
 	return (
 		<div className='relative min-h-dvh w-full mb-24'>
 			<div className='w-full flex flex-col items-center justify-start p-4 gap-2 max-w-md mx-auto bg-background '>
+				<Lights />
 				<Header />
 				<IntroBlock />
 				<NextShow changeModalTrap={changeModalTrap} />

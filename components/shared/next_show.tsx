@@ -14,7 +14,7 @@ export const NextShow: React.FC<Props> = ({ className, changeModalTrap }) => {
 		<div
 			onClick={() => changeModalTrap()}
 			className={cn(
-				'group w-full relative pt-6 select-none flex flex-row gap-4 items-start justify-between bg-background cursor-pointer',
+				'group w-full relative select-none flex flex-row gap-4 items-start justify-between bg-white/10 backdrop-blur-md rounded-3xl p-2 cursor-pointer',
 				className,
 			)}
 		>

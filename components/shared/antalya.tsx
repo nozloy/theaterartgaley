@@ -17,12 +17,7 @@ export const Antalya: React.FC<Props> = ({ className, ...props }) => {
 				height={150}
 				className='z-10 absolute -top-6 rounded-3xl drop-shadow contrast-125 '
 			/>
-			<Label className='hidden md:block text-foreground font-bold text-md'>
-				Турция - Анталья
-			</Label>
-			<Label className='block md:hidden text-foreground font-bold text-lg'>
-				Анталья
-			</Label>
+			<Label className=' text-foreground font-bold text-lg'>Анталья</Label>
 		</div>
 	)
 }

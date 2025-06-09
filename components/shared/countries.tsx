@@ -21,7 +21,7 @@ interface Props {
 
 export const Countries: React.FC<Props> = ({ className }) => {
 	const style =
-		'h-[80px] iphone:h-[100px] w-[110px] iphone:w-[180px] relative flex flex-col gap-0 items-center justify-end rounded-[30px] bg-background shadow-sm p-4 pb-2  shadow-foreground hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer active:shadow-red-600 active:scale-95'
+		'h-[80px] iphone:h-[100px] w-[110px] iphone:w-[180px] relative flex flex-col gap-0 items-center justify-end rounded-[30px] bg-background/25 backdrop-blur-xl shadow-sm p-4 pb-2  shadow-red-500 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer active:shadow-red-600 active:scale-95'
 	return (
 		<div
 			className={cn(

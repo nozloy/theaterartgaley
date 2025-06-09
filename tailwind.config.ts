@@ -5,7 +5,7 @@ const {
 import type { Config } from 'tailwindcss'
 
 export default {
-	darkMode: ['selector'],
+	darkMode: ['selector', 'class'],
 	content: [
 		'./pages/**/*.{js,ts,jsx,tsx,mdx}',
 		'./components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -14,18 +14,43 @@ export default {
 	theme: {
 		extend: {
 			screens: {
-				iphone: '390px', // имя: значение
+				iphone: '390px',
 			},
 			animation: {
-				aurora: 'aurora 60s linear infinite',
+				'pulse-slow': 'pulseSlow 4s ease-in-out infinite',
+				'pulse-slow2': 'pulseSlow2 6s ease-in-out infinite',
 			},
 			keyframes: {
+				pulseSlow: {
+					'0%, 100%': { opacity: '0.5' },
+					'50%': { opacity: '0.9' },
+				},
+				pulseSlow2: {
+					'0%, 100%': { opacity: '0.3' },
+					'50%': { opacity: '0.7' },
+				},
 				aurora: {
 					from: {
 						backgroundPosition: '50% 50%, 50% 50%',
 					},
 					to: {
 						backgroundPosition: '350% 50%, 350% 50%',
+					},
+				},
+				'accordion-down': {
+					from: {
+						height: '0',
+					},
+					to: {
+						height: 'var(--radix-accordion-content-height)',
+					},
+				},
+				'accordion-up': {
+					from: {
+						height: 'var(--radix-accordion-content-height)',
+					},
+					to: {
+						height: '0',
 					},
 				},
 			},

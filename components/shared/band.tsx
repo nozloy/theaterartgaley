@@ -3,13 +3,23 @@ import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import {
 	Sheet,
+	SheetClose,
 	SheetContent,
 	SheetDescription,
+	SheetFooter,
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
 } from '@/components/ui/sheet'
-import { Calendar } from 'lucide-react'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { Label } from '../ui/label'
+import { Badge } from '../ui/badge'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { teamMembers } from '@/constants/team-members'
+import { TeamMember } from '@/types/team'
+import { Separator } from '../ui/separator'
+import { Award, GraduationCap } from 'lucide-react'
+import { Button } from '../ui/button'
 interface Props {
 	className?: string
 }
@@ -41,68 +51,106 @@ export const Band: React.FC<Props> = ({ className }) => {
 			</SheetTrigger>
 			<SheetContent className='w-full overflow-y-auto max-h-dvh'>
 				<SheetHeader>
-					<SheetTitle>Роли в фильмах</SheetTitle>
+					<SheetTitle>Труппа театра</SheetTitle>
 					<SheetDescription></SheetDescription>
-					<div className=' flex flex-col gap-4 rounded-3xl items-start justify-start '>
-						<div className='flex flex-row gap-1 items-center justify-start'>
-							<Calendar size={16} />
-							<p className='font-bold'>2024</p>
-						</div>
-						<div>
-							Цвет граната (врач) — Художественный фильм, эпизод, режиссёр{' '}
-							<p className='text-red-600'>Егор Баринов</p>
-						</div>
-
-						<p>
-							Ледяные тени (начальник станции) — Художественный фильм, главная
-							роль
-						</p>
-
-						<div>
-							Капкан (офицер полиции) — 1й народный театр Анталии, режиссёр{' '}
-							<p className='text-red-600'>Артур Галеев</p>
-						</div>
-
-						<div className='flex flex-row gap-1 items-center justify-start'>
-							<Calendar size={16} />
-							<p className='font-bold'>2023</p>
-						</div>
-						<div className='shadow-red-950 shadow-sm rounded-3xl p-2'>
-							Министерство неджентельменских дел (офицер) — Эпизод, режиссёр{' '}
-							<p className='text-red-600'>Гай Ричи</p>
-						</div>
-
-						<div>
-							Ататюрк (офицер) — Художественный фильм, эпизод, режиссёр{' '}
-							<p className='text-red-600'>Мехмет Ада Озтекин</p>
-						</div>
-						<div>
-							Номер 13 (ревнивый муж Ронни) — 1й народный театр Анталии,
-							режиссёр
-							<p className='text-red-600'>Александр Галимов</p>
-						</div>
-
-						<div>
-							Чем зацепить миллионера? (владелец паба) — 1й народный театр
-							Анталии, режиссёр{' '}
-							<p className='text-red-600'>Александр Галимов</p>
-						</div>
-
-						<p>Агентство недвижимости (Марк Антоний)</p>
-
-						<div className='flex flex-row gap-1 items-center justify-start'>
-							<Calendar size={16} />
-							<p className='font-bold'>2022</p>
-						</div>
-						<p>МТС (отдыхающий)</p>
-
-						<div className='flex flex-row gap-1 items-center justify-start'>
-							<Calendar size={16} />
-							<p className='font-bold'>2021</p>
-						</div>
-						<p>Барбершоп (отец)</p>
-					</div>
 				</SheetHeader>
+				<div className='w-full flex flex-col gap-4 rounded-3xl items-start justify-start '>
+					{teamMembers.map((member: TeamMember, idx: number) => (
+						<div
+							key={member.id ?? idx}
+							className='rounded-[30px] bg-background/80 w-full border border-border p-4 shadow-sm shadow-red-950'
+						>
+							<div className='flex flex-col gap-4 items-center justify-center w-full'>
+								<Avatar className='w-32 h-32 border border-border shadow-sm shadow-red-950'>
+									<AvatarImage
+										src={
+											member.avatar
+												? `/images/avatars/${member.avatar}`
+												: '/images/masks.png'
+										}
+										alt={member.name}
+										className='object-cover'
+									/>
+
+									<AvatarFallback>AG</AvatarFallback>
+								</Avatar>
+
+								<Label className='text-foreground text-2xl font-bold'>
+									{member.name}
+								</Label>
+								<div className=' flex flex-wrap gap-1 items-center justify-center'>
+									{member.roles.map((role, idx) => (
+										<Badge
+											variant={'default'}
+											key={idx}
+											className='iphone:text-base'
+										>
+											{role}
+										</Badge>
+									))}
+								</div>
+								<Separator />
+								<Tabs className='flex flex-col items-center justify-center w-full'>
+									<TabsList>
+										{member.education.length > 0 && (
+											<TabsTrigger value='education'>
+												<div className='flex flex-row gap-1 items-center justify-center'>
+													<GraduationCap size={16} />
+
+													<p>Образование</p>
+												</div>
+											</TabsTrigger>
+										)}
+										<TabsTrigger
+											value='achievements'
+											className='[&[data-state=inactive]>div]:inline-flex relative'
+										>
+											<div className='hidden absolute -top-2 -right-1 w-3 h-3 bg-red-500 rounded-full opacity-75 animate-ping' />
+											<div className='hidden absolute -top-2 -right-1 w-3 h-3 bg-red-600 rounded-full ' />
+											<div className=' flex flex-row gap-1 items-center justify-center'>
+												<Award size={16} />
+
+												<p>Достижения</p>
+											</div>
+										</TabsTrigger>
+									</TabsList>
+									{member.education.length > 0 && (
+										<TabsContent
+											value='education'
+											className='flex flex-col gap-2 items-center justify-center'
+										>
+											{member.education.map((edu, idx) => (
+												<Label
+													key={idx}
+													className='iphone:text-base text-center'
+												>
+													{edu}
+												</Label>
+											))}
+										</TabsContent>
+									)}
+									<TabsContent
+										value='achievements'
+										className='flex flex-col gap-2 items-center justify-center'
+									>
+										{member.experience.map((exp, idx) => (
+											<Label key={idx} className='iphone:text-base text-center'>
+												{exp}
+											</Label>
+										))}
+									</TabsContent>
+								</Tabs>
+							</div>
+						</div>
+					))}
+				</div>
+				<SheetFooter className='my-6'>
+					<SheetClose asChild>
+						<Button variant='secondary' className='h-12 text-xl'>
+							Закрыть
+						</Button>
+					</SheetClose>
+				</SheetFooter>
 			</SheetContent>
 		</Sheet>
 	)
