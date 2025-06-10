@@ -21,12 +21,13 @@ export default function Home() {
 		setModalTrap(!modal_trap)
 	}
 	return (
-		<div className=' min-h-dvh w-full'>
-			<div className=' w-full flex flex-col items-center justify-start p-4 gap-2 max-w-md mx-auto bg-background '>
-				<CookieConsent />
+		<div className='w-full'>
+			<div className='w-full flex flex-col items-center justify-start p-4 gap-2 max-w-md mx-auto bg-background '>
 				<Header />
 				<Lights />
-
+				<div className='fixed bottom-4 z-50 max-w-md p-2'>
+					<CookieConsent />
+				</div>
 				<IntroBlock />
 				<NextShow changeModalTrap={changeModalTrap} />
 				<div

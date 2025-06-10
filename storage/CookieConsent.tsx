@@ -19,16 +19,13 @@ export default function CookieConsent() {
 	if (!visible) return null
 
 	return (
-		<div className='fixed bottom-4 z-50 max-w-md p-2'>
-			<div className=' bg-black backdrop-blur-xl p-4 rounded-xl shadow-xl flex flex-row   items-center justify-between gap-2 '>
-				<p className='text-sm text-foreground text-center'>
-					Мы используем файлы cookie и сервисы метрики для улучшения работы
-					сайта.
-				</p>
-				<Button size='lg' onClick={acceptCookies}>
-					Понятно
-				</Button>
-			</div>
+		<div className=' bg-black backdrop-blur-xl p-4 rounded-xl shadow-xl flex flex-row   items-center justify-between gap-2 '>
+			<p className='text-sm text-foreground text-center'>
+				Мы используем файлы cookie и сервисы метрики для улучшения работы сайта.
+			</p>
+			<Button size='lg' onClick={acceptCookies}>
+				Понятно
+			</Button>
 		</div>
 	)
 }
