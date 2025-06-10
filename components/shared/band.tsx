@@ -51,7 +51,9 @@ export const Band: React.FC<Props> = ({ className }) => {
 			</SheetTrigger>
 			<SheetContent className='w-full overflow-y-auto max-h-dvh'>
 				<SheetHeader>
-					<SheetTitle>Труппа театра</SheetTitle>
+					<SheetTitle className='text-foreground font-bold text-3xl mb-4'>
+						Труппа театра
+					</SheetTitle>
 					<SheetDescription></SheetDescription>
 				</SheetHeader>
 				<div className='w-full flex flex-col gap-4 rounded-3xl items-start justify-start '>
@@ -146,7 +148,7 @@ export const Band: React.FC<Props> = ({ className }) => {
 				</div>
 				<SheetFooter className='my-6'>
 					<SheetClose asChild>
-						<Button variant='secondary' className='h-12 text-xl'>
+						<Button variant='secondary' className='h-12 text-xl w-full'>
 							Закрыть
 						</Button>
 					</SheetClose>

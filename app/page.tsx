@@ -12,6 +12,8 @@ import { Band } from '@/components/shared/band'
 import { cn } from '@/lib/utils'
 import { useState } from 'react'
 import { Lights } from '@/components/shared/lights'
+import CookieConsent from '@/storage/CookieConsent'
+import { Footer } from '@/components/shared/footer'
 
 export default function Home() {
 	const [modal_trap, setModalTrap] = useState(false)
@@ -19,10 +21,12 @@ export default function Home() {
 		setModalTrap(!modal_trap)
 	}
 	return (
-		<div className='relative min-h-dvh w-full mb-24'>
-			<div className='w-full flex flex-col items-center justify-start p-4 gap-2 max-w-md mx-auto bg-background '>
-				<Lights />
+		<div className=' min-h-dvh w-full'>
+			<div className=' w-full flex flex-col items-center justify-start p-4 gap-2 max-w-md mx-auto bg-background '>
+				<CookieConsent />
 				<Header />
+				<Lights />
+
 				<IntroBlock />
 				<NextShow changeModalTrap={changeModalTrap} />
 				<div
@@ -55,6 +59,7 @@ export default function Home() {
 				</div>
 
 				<Countries />
+				<Footer />
 			</div>
 		</div>
 	)

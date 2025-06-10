@@ -73,7 +73,7 @@ export const teamMembers: TeamMember[] = [
 		id: 'asya-donmez',
 		name: 'Ася Донмез',
 		roles: ['Актриса', 'Фотомодель'],
-		experience: ['Спектакли Английских театров', 'Реклама'],
+		experience: ['Спектакли Анталийских театров', 'Реклама'],
 		education: [],
 		avatar: 'asya_donmez.png',
 	},

@@ -18,14 +18,14 @@ export const NextShow: React.FC<Props> = ({ className, changeModalTrap }) => {
 				className,
 			)}
 		>
-			<div className='relative w-[160px] iphone:w-[180px]  select-none flex flex-col gap-2 items-center justify-center border border-border shadow-sm shadow-red-950 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer rounded-[20px] bg-background active:shadow-red-600 active:scale-95'>
+			<div className='relative w-[160px] iphone:w-[180px]  select-none flex flex-col gap-2 items-center justify-center  '>
 				<Image
 					src='/images/afisha.png'
 					alt='poster'
 					loading='eager'
 					width={200}
 					height={240}
-					className='z-10 brightness-150 rounded-3xl object-contain'
+					className='z-10 brightness-150 rounded-3xl object-cover drop-shadow-lg'
 				/>
 			</div>
 
@@ -33,8 +33,8 @@ export const NextShow: React.FC<Props> = ({ className, changeModalTrap }) => {
 				<div className='flex items-center justify-center w-[100px] text-lg px-2 py-1 mb-1 rounded-xl bg-red-600 text-foreground font-bold'>
 					23 июня
 				</div>
-				<Label className='text-red-600 *:tracking-tight *:font-base *:text-[13.5px] flex flex-col gap-1'>
-					<p>Иммерсивный спектакль</p>
+				<Label className='text-red-600  *:tracking-tight *:font-base *:text-[13.5px] flex flex-col gap-1'>
+					<p className='drop-shadow-lg'>Иммерсивный спектакль</p>
 				</Label>
 
 				<Label className='select-none text-xl text-foreground group-hover:underline duration-300 ease-in-out'>

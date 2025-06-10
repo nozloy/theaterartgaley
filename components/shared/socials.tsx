@@ -13,6 +13,7 @@ import { Button } from '../ui/button'
 import { cn } from '@/lib/utils'
 import { Label } from '../ui/label'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface Props {
 	className?: string
@@ -80,9 +81,13 @@ export const Socials: React.FC<Props> = ({ className }) => {
 						</div>
 						<div className='mb-10 mx-4 p-2 rounded-xl border border-border border-dashed text-center text-sm text-foreground'>
 							Используя один из методов связи Вы соглашаетесь с нашей
-							<p className='text-red-100 underline'>
+							<Link
+								href='/privacy'
+								target='_blank'
+								className='text-red-600 underline pl-1 drop-shadow-sm'
+							>
 								политикой конфиденциальности
-							</p>
+							</Link>
 						</div>
 						<DrawerFooter className='hidden md:block'>
 							<DrawerClose asChild>

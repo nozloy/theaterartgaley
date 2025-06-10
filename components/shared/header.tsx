@@ -11,7 +11,7 @@ export const Header: React.FC<Props> = ({ className }) => {
 	return (
 		<div
 			className={cn(
-				'flex flex-row items-center justify-between rounded-xl shadow-lg  w-full py-2 px-6 bg-background select-none',
+				'flex flex-row items-center justify-between rounded-xl shadow-lg  w-full py-2 px-6  select-none',
 				className,
 			)}
 		>
