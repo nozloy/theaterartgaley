@@ -51,6 +51,13 @@ export const Afisha: React.FC<Props> = ({ className }) => {
 							</div>
 							<div className='text-md'>Ловушка для одинокого мужчины</div>
 						</div>
+
+						<div className='w-full flex flex-row gap-2 items-center justify-start border border-border shadow-sm shadow-red-950 rounded-3xl p-3 bg-background'>
+							<div className='text-sm px-2 py-1 rounded-xl bg-red-600 text-foreground font-bold'>
+								21 июля
+							</div>
+							<div className='text-md'>Ловушка для одинокого мужчины</div>
+						</div>
 					</div>
 
 					<DrawerFooter className='hidden md:block'>
