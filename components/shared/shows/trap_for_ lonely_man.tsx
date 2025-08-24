@@ -41,7 +41,7 @@ export const TrapForLonelyMan: React.FC<Props> = ({ className }) => {
 				<Button
 					onClick={() =>
 						window.open(
-							'https://kzn.kassir.ru/teatr/lovushka-dlya-odinokogo-mujchinyi-immersivnyiy-spektakl#3042403',
+							'https://kzn.kassir.ru/teatr/lovushka-dlya-odinokogo-mujchinyi-immersivnyiy-spektakl#3143018',
 							'_blank',
 						)
 					}
