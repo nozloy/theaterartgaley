@@ -31,7 +31,7 @@ export const NextShow: React.FC<Props> = ({ className, changeModalTrap }) => {
 
 			<div className='w-[180px] *:select-none flex flex-col pt-1 gap-2 iphone:gap-4 items-start justify-start text-foreground text-xl font-bold '>
 				<div className='flex items-center justify-center w-[120px] text-lg px-2 py-1 mb-1 rounded-xl bg-red-600 text-foreground font-bold'>
-					3 октября
+					30 октября
 				</div>
 				<Label className='text-red-600  *:tracking-tight *:font-base *:text-[13.5px] flex flex-col gap-1'>
 					<p className='drop-shadow-lg'>Иммерсивный спектакль</p>
