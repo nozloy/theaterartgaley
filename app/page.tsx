@@ -14,6 +14,7 @@ import { useState } from 'react'
 import { Lights } from '@/components/shared/lights'
 import CookieConsent from '@/storage/CookieConsent'
 import { Footer } from '@/components/shared/footer'
+import { ButtonsBlock } from '@/components/shared/buttons_block'
 
 export default function Home() {
 	const [modal_trap, setModalTrap] = useState(false)
@@ -30,11 +31,12 @@ export default function Home() {
 				</div>
 				<IntroBlock />
 				<NextShow changeModalTrap={changeModalTrap} />
+				<ButtonsBlock className='mt-2 mb-4' />
 				<div
 					className={cn(
 						'transition-all duration-700 ease-in-out overflow-hidden',
 						modal_trap
-							? 'max-h-[1000px] opacity-100 mt-4'
+							? 'max-h-[1000px] opacity-100 my-4'
 							: 'max-h-0 opacity-0 mt-0',
 					)}
 				>

@@ -18,6 +18,30 @@ interface Props {
 	className?: string
 }
 
+interface ShowData {
+	date: string
+	title: string
+}
+
+const shows: ShowData[] = [
+	{ date: '23 июня', title: 'Ловушка для одинокого мужчины' },
+	{ date: '28 июля', title: 'Ловушка для одинокого мужчины' },
+	{ date: '28 августа', title: 'Ловушка для одинокого мужчины' },
+	{ date: '3 октября', title: 'Ловушка для одинокого мужчины' },
+	{ date: '30 октября', title: 'Ловушка для одинокого мужчины' },
+	{ date: '30 ноября', title: 'Ловушка для одинокого мужчины' },
+	{ date: 'декабрь', title: 'Ловушка для одинокого мужчины' },
+]
+
+const ShowItem: React.FC<ShowData> = ({ date, title }) => (
+	<div className='w-full flex flex-row gap-2 items-center justify-start border border-border shadow-sm shadow-red-950 rounded-3xl p-3 bg-background'>
+		<div className='text-[12px] px-2 py-1 rounded-xl bg-red-600 text-foreground font-bold'>
+			{date}
+		</div>
+		<div className='text-md'>{title}</div>
+	</div>
+)
+
 export const Afisha: React.FC<Props> = ({ className }) => {
 	return (
 		<Drawer>
@@ -45,38 +69,9 @@ export const Afisha: React.FC<Props> = ({ className }) => {
 						<DrawerDescription>Cпектаклей сезона</DrawerDescription>
 					</DrawerHeader>
 					<div className='w-full flex flex-col items-center justify-center gap-4 pb-20'>
-						<div className='w-full flex flex-row gap-2 items-center justify-start border border-border shadow-sm shadow-red-950 rounded-3xl p-3 bg-background'>
-							<div className='text-sm px-2 py-1 rounded-xl bg-red-600 text-foreground font-bold'>
-								23 июня
-							</div>
-							<div className='text-md'>Ловушка для одинокого мужчины</div>
-						</div>
-
-						<div className='w-full flex flex-row gap-2 items-center justify-start border border-border shadow-sm shadow-red-950 rounded-3xl p-3 bg-background'>
-							<div className='text-sm px-2 py-1 rounded-xl bg-red-600 text-foreground font-bold'>
-								28 июля
-							</div>
-							<div className='text-md'>Ловушка для одинокого мужчины</div>
-						</div>
-
-						<div className='w-full flex flex-row gap-2 items-center justify-start border border-border shadow-sm shadow-red-950 rounded-3xl p-3 bg-background'>
-							<div className='text-sm px-2 py-1 rounded-xl bg-red-600 text-foreground font-bold'>
-								28 августа
-							</div>
-							<div className='text-md'>Ловушка для одинокого мужчины</div>
-						</div>
-						<div className='w-full flex flex-row gap-2 items-center justify-start border border-border shadow-sm shadow-red-950 rounded-3xl p-3 bg-background'>
-							<div className='text-sm px-2 py-1 rounded-xl bg-red-600 text-foreground font-bold'>
-								3 октября
-							</div>
-							<div className='text-md'>Ловушка для одинокого мужчины</div>
-						</div>
-						<div className='w-full flex flex-row gap-2 items-center justify-start border border-border shadow-sm shadow-red-950 rounded-3xl p-3 bg-background'>
-							<div className='text-sm px-2 py-1 rounded-xl bg-red-600 text-foreground font-bold'>
-								30 октября
-							</div>
-							<div className='text-md'>Ловушка для одинокого мужчины</div>
-						</div>
+						{shows.map((show, index) => (
+							<ShowItem key={index} {...show} />
+						))}
 					</div>
 
 					<DrawerFooter className='hidden md:block'>

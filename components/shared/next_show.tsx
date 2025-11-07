@@ -2,7 +2,6 @@ import React from 'react'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { Label } from '../ui/label'
-import { CircleArrowRight } from 'lucide-react'
 
 interface Props {
 	className?: string
@@ -31,36 +30,19 @@ export const NextShow: React.FC<Props> = ({ className, changeModalTrap }) => {
 
 			<div className='w-[180px] *:select-none flex flex-col pt-1 gap-2 iphone:gap-4 items-start justify-start text-foreground text-xl font-bold '>
 				<div className='flex items-center justify-center w-[120px] text-lg px-2 py-1 mb-1 rounded-xl bg-red-600 text-foreground font-bold'>
-					30 октября
+					30 ноября
 				</div>
-				<Label className='text-red-600  *:tracking-tight *:font-base *:text-[13.5px] flex flex-col gap-1'>
-					<p className='drop-shadow-lg'>Иммерсивный спектакль</p>
-				</Label>
 
 				<Label className='select-none text-xl text-foreground group-hover:underline duration-300 ease-in-out'>
 					Ловушка для одинокого мужчины
 				</Label>
-				<div className='flex flex-col gap-1'>
-					<Image
-						src='/1.svg'
-						alt='Adress1'
-						width={140}
-						height={20}
-						className='  '
-					/>
-					<Image
-						src='/2.svg'
-						alt='Adress1'
-						width={140}
-						height={20}
-						className='  '
-					/>
-				</div>
-				{/* <Label className='text-foreground/70 *:tracking-tight *:font-base *:text-[13.5px] flex flex-col gap-1'>
-					<p>Сбор гостей: 19:30</p>
+				<Label className='text-red-600 *:tracking-tight *:font-base *:text-base flex flex-col gap-1'>
+					<p className='drop-shadow-lg'>Иммерсивный спектакль</p>
+				</Label>
+				<Label className='text-foreground/70 *:tracking-tight *:font-base *:text-[13.5px] flex flex-col gap-1'>
 					<p>Питейный дом 100Dal</p>
-				</Label> */}
-				<CircleArrowRight size={24} />
+					<p>ул.Пушкина, 23, Казань</p>
+				</Label>
 			</div>
 		</div>
 	)
