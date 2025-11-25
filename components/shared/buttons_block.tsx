@@ -9,6 +9,9 @@ interface Props {
 }
 
 export const ButtonsBlock: React.FC<Props> = ({ className }) => {
+	const link = process.env.NEXT_PUBLIC_KASSIR_URL || '#'
+	const map_link =
+		process.env.NEXT_PUBLIC_MAPS_URL || 'https://yandex.ru/maps/-/CLWjQ4iX'
 	return (
 		<div className={cn('', className)}>
 			<div className='flex flex-wrap gap-2 justify-center max-w-md  items-center'>
@@ -22,7 +25,7 @@ export const ButtonsBlock: React.FC<Props> = ({ className }) => {
 				</Button>
 
 				<Button
-					onClick={() => window.open('https://yandex.ru/maps/-/CHGtmHPk')}
+					onClick={() => window.open(map_link, '_blank')}
 					variant={'secondary'}
 					className='flex flex-row gap-1 items-center justify-center  w-[120px] h-[40px]  shadow-sm shadow-red-800   hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out rounded-[30px]'
 				>
@@ -30,12 +33,7 @@ export const ButtonsBlock: React.FC<Props> = ({ className }) => {
 					<p>Маршрут</p>
 				</Button>
 				<Button
-					onClick={() =>
-						window.open(
-							'https://kzn.kassir.ru/teatr/lovushka-dlya-odinokogo-mujchinyi-immersivnyiy-spektakl#3143018',
-							'_blank',
-						)
-					}
+					onClick={() => window.open(link, '_blank')}
 					variant={'default'}
 					className='relative flex flex-row gap-1 items-center justify-center bg-foreground w-[120px] h-[40px] *:text-background shadow-md shadow-red-800  hover:bg-foreground hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out rounded-[30px] border border-border'
 				>
