@@ -23,7 +23,7 @@ export const NextShow: React.FC<Props> = ({ className, changeModalTrap }) => {
 				className,
 			)}
 		>
-			<div className='relative w-[160px] iphone:w-[180px] h-full select-none flex flex-col gap-2 items-center justify-center  '>
+			<div className='relative w-[180px] iphone:w-[180px] h-full select-none flex flex-col gap-2 items-center justify-center  '>
 				<Image
 					src={image}
 					alt='poster'
@@ -35,7 +35,7 @@ export const NextShow: React.FC<Props> = ({ className, changeModalTrap }) => {
 			</div>
 
 			<div className='w-[200px] h-full *:select-none flex flex-col pt-1 gap-2 iphone:gap-4 items-start justify-start text-foreground text-xl font-bold '>
-				<div className='flex items-center justify-center w-[120px] text-lg px-2 py-1 mb-1 rounded-xl bg-red-600 text-foreground font-bold'>
+				<div className='flex items-center justify-center w-[130px] text-lg px-2 py-1 mb-1 rounded-xl bg-red-600 text-foreground font-bold'>
 					{date}
 				</div>
 
