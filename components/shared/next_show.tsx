@@ -12,7 +12,7 @@ export const NextShow: React.FC<Props> = ({ className, changeModalTrap }) => {
 	const label = process.env.NEXT_PUBLIC_LABEL || ''
 	const date = process.env.NEXT_PUBLIC_DATE || ''
 	const adress = process.env.NEXT_PUBLIC_ADRESS || ''
-	const time = process.env.NEXT_PUBLIC_TIME || ''
+	// const time = process.env.NEXT_PUBLIC_TIME || ''
 
 	const image = process.env.NEXT_PUBLIC_IMAGE_URL || '/images/afisha.png'
 	return (
@@ -45,9 +45,9 @@ export const NextShow: React.FC<Props> = ({ className, changeModalTrap }) => {
 				<Label className='text-red-600 *:tracking-tight *:font-base *:text-[16px]  line'>
 					<p className='drop-shadow-lg leading-none  '>Иммерсивный спектакль</p>
 				</Label>
-				<Label className='mt-auto text-foreground *:tracking-tight *:font-base *:text-[18px] leading-snug line'>
+				{/* <Label className='mt-auto text-foreground *:tracking-tight *:font-base *:text-[18px] leading-snug line'>
 					<p>Начало в {time}</p>
-				</Label>
+				</Label> */}
 				<Label className='mt-auto pb-2 text-foreground/70 *:tracking-tight *:font-base *:text-[13.5px] leading-snug line text-left'>
 					<p>{adress}</p>
 				</Label>
