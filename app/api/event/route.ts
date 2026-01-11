@@ -12,7 +12,7 @@ export async function POST(request: Request) {
 	if (password !== process.env.EVENT_ADMIN_TOKEN) {
 		return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 	}
-
+	delete eventData.password
 	await setServerEvent(eventData)
 	return NextResponse.json({ ok: true })
 }
