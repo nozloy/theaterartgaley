@@ -10,17 +10,34 @@ import { TrapForLonelyMan } from '@/components/shared/shows/trap_for_ lonely_man
 import { Socials } from '@/components/shared/socials'
 import { Band } from '@/components/shared/band'
 import { cn } from '@/lib/utils'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Lights } from '@/components/shared/lights'
 import CookieConsent from '@/storage/CookieConsent'
 import { Footer } from '@/components/shared/footer'
 import { ButtonsBlock } from '@/components/shared/buttons_block'
+import { EventData } from '@/lib/event'
 
+const defaultEvent: EventData = {
+	label: 'Ловушка для одинокого мужчины',
+	date: '9 января',
+	time: '18:00',
+	address: 'Бар 100dal, Пушкина, 23',
+	image: '/images/afisha.png',
+	kassirUrl:
+		'https://kassir.ru/theatre/event/lovushka-dlya-odinokogo-muzhchiny-1698781',
+	mapsUrl: 'https://yandex.ru/maps/-/CLTpUIkp',
+}
 export default function Home() {
 	const [modal_trap, setModalTrap] = useState(false)
 	const changeModalTrap = () => {
 		setModalTrap(!modal_trap)
 	}
+	const [event, setEvent] = useState<EventData>(defaultEvent)
+	useEffect(() => {
+		fetch('/api/event')
+			.then(res => res.json())
+			.then(event => setEvent(event))
+	}, [])
 	return (
 		<div className='w-full'>
 			<div className='w-full flex flex-col items-center justify-start p-4 gap-2 max-w-md mx-auto bg-background '>
@@ -30,8 +47,8 @@ export default function Home() {
 					<CookieConsent />
 				</div>
 				<IntroBlock />
-				<NextShow changeModalTrap={changeModalTrap} />
-				<ButtonsBlock className='mt-2 mb-4' />
+				<NextShow changeModalTrap={changeModalTrap} event={event} />
+				<ButtonsBlock className='mt-2 mb-4' event={event} />
 				<div
 					className={cn(
 						'transition-all duration-700 ease-in-out overflow-hidden',

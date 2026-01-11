@@ -1,55 +1,52 @@
-import React from 'react'
+'use client'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { Label } from '../ui/label'
+import { EventData } from '@/lib/event'
 
 interface Props {
 	className?: string
 	changeModalTrap: () => void
+	event: EventData
 }
 
-export const NextShow: React.FC<Props> = ({ className, changeModalTrap }) => {
-	const label = process.env.NEXT_PUBLIC_LABEL || ''
-	const date = process.env.NEXT_PUBLIC_DATE || ''
-	const adress = process.env.NEXT_PUBLIC_ADRESS || ''
-	// const time = process.env.NEXT_PUBLIC_TIME || ''
-
-	const image = process.env.NEXT_PUBLIC_IMAGE_URL || '/images/afisha.png'
+export function NextShow({ className, changeModalTrap, event }: Props) {
 	return (
 		<div
-			onClick={() => changeModalTrap()}
+			onClick={changeModalTrap}
 			className={cn(
-				'group w-full  relative select-none flex flex-row gap-2 items-start justify-between bg-white/10 backdrop-blur-md rounded-3xl p-2 cursor-pointer',
+				'group w-full relative select-none flex flex-row gap-2 items-start justify-between bg-white/10 backdrop-blur-md rounded-3xl p-2 cursor-pointer',
 				className,
 			)}
 		>
-			<div className='relative w-[180px] iphone:w-[180px] h-full select-none flex flex-col gap-2 items-center justify-center  '>
-				<Image
-					src={image}
-					alt='poster'
-					loading='eager'
-					width={200}
-					height={240}
-					className='z-10 brightness-150 rounded-3xl object-cover drop-shadow-lg'
-				/>
+			<div className='relative w-[180px] h-full flex items-center justify-center'>
+				{event && (
+					<Image
+						src={event.image}
+						alt='poster'
+						loading='eager'
+						width={200}
+						height={240}
+						className='z-10 brightness-150 rounded-3xl object-cover drop-shadow-lg'
+					/>
+				)}
 			</div>
 
-			<div className='w-[200px] h-full *:select-none flex flex-col pt-1 gap-2 iphone:gap-4 items-start justify-start text-foreground text-xl font-bold '>
+			<div className='w-[200px] h-full flex flex-col pt-1 gap-2 text-foreground text-xl font-bold'>
 				<div className='flex items-center justify-center w-[130px] text-lg px-2 py-1 mb-1 rounded-xl bg-red-600 text-foreground font-bold'>
-					{date}
+					{event?.date}
 				</div>
 
-				<Label className='select-none text-[20px] text-foreground group-hover:underline duration-300 ease-in-out'>
-					{label}
+				<Label className='text-[20px] group-hover:underline'>
+					{event?.label}
 				</Label>
-				<Label className='text-red-600 *:tracking-tight *:font-base *:text-[16px]  line'>
-					<p className='drop-shadow-lg leading-none  '>Иммерсивный спектакль</p>
+
+				<Label className='text-red-600 text-[16px]'>
+					Иммерсивный спектакль
 				</Label>
-				{/* <Label className='mt-auto text-foreground *:tracking-tight *:font-base *:text-[18px] leading-snug line'>
-					<p>Начало в {time}</p>
-				</Label> */}
-				<Label className='mt-auto pb-2 text-foreground/70 *:tracking-tight *:font-base *:text-[13.5px] leading-snug line text-left'>
-					<p>{adress}</p>
+
+				<Label className='mt-auto pb-2 text-foreground/70 text-[13.5px] leading-snug text-left'>
+					{event?.address}
 				</Label>
 			</div>
 		</div>
