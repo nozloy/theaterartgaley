@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { cn } from '@/lib/utils'
 import { Button } from '../ui/button'
@@ -7,10 +8,10 @@ import { EventData } from '@/lib/event'
 
 interface Props {
 	className?: string
-	event: EventData
+	eventData: EventData
 }
 
-export const ButtonsBlock: React.FC<Props> = ({ className, event }) => {
+export const ButtonsBlock: React.FC<Props> = ({ className, eventData }) => {
 	return (
 		<div className={cn('', className)}>
 			<div className='flex flex-wrap gap-2 justify-center max-w-md  items-center'>
@@ -24,7 +25,7 @@ export const ButtonsBlock: React.FC<Props> = ({ className, event }) => {
 				</Button>
 
 				<Button
-					onClick={() => window.open(event.mapsUrl, '_blank')}
+					onClick={() => window.open(eventData.mapsUrl, '_blank')}
 					variant={'secondary'}
 					className='flex flex-row gap-1 items-center justify-center  w-[120px] h-[40px]  shadow-sm shadow-red-800   hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out rounded-[30px]'
 				>
@@ -32,7 +33,7 @@ export const ButtonsBlock: React.FC<Props> = ({ className, event }) => {
 					<p>Маршрут</p>
 				</Button>
 				<Button
-					onClick={() => window.open(event.kassirUrl, '_blank')}
+					onClick={() => window.open(eventData.kassirUrl, '_blank')}
 					variant={'default'}
 					className='relative flex flex-row gap-1 items-center justify-center bg-foreground w-[120px] h-[40px] *:text-background shadow-md shadow-red-800  hover:bg-foreground hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out rounded-[30px] border border-border'
 				>

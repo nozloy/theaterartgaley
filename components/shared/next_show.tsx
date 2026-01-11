@@ -6,14 +6,12 @@ import { EventData } from '@/lib/event'
 
 interface Props {
 	className?: string
-	changeModalTrap: () => void
 	event: EventData
 }
 
-export function NextShow({ className, changeModalTrap, event }: Props) {
+export function NextShow({ className, event }: Props) {
 	return (
 		<div
-			onClick={changeModalTrap}
 			className={cn(
 				'group w-full relative select-none flex flex-row gap-2 items-start justify-between bg-white/10 backdrop-blur-md rounded-3xl p-2 cursor-pointer',
 				className,
