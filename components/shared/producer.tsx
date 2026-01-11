@@ -21,7 +21,7 @@ export const Producer: React.FC<Props> = ({ className }) => {
 			<SheetTrigger>
 				<div
 					className={cn(
-						'relative w-[160px] iphone:w-[180px]  select-none flex flex-col gap-2 items-center justify-center border border-border shadow-sm shadow-red-950 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer rounded-[20px] bg-background active:shadow-red-600 active:scale-95',
+						'relative w-40 iphone:w-48  select-none flex flex-col gap-2 items-center justify-center border border-border shadow-sm shadow-red-950 hover:shadow-red-600 hover:scale-105 duration-300 ease-in-out cursor-pointer rounded-[20px] bg-background active:shadow-red-600 active:scale-95',
 						className,
 					)}
 				>

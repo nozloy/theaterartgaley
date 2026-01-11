@@ -1,7 +1,17 @@
 import 'server-only'
 import fs from 'fs/promises'
 import path from 'path'
-import { EventData } from './event'
+
+export interface EventData {
+	label: string
+	date: string
+	time?: string
+	address: string
+	image: string
+	kassirUrl?: string
+	mapsUrl?: string
+	description?: string
+}
 
 const dataPath =
 	process.env.EVENT_DATA_PATH ?? path.join(process.cwd(), 'data/event.json')
@@ -34,4 +44,10 @@ function validateEvent(data: Partial<EventData>) {
 			throw new Error(`event.json missing required field: ${key}`)
 		}
 	}
+}
+
+export async function setServerEvent(data: EventData) {
+	validateEvent(data)
+	const raw = JSON.stringify(data, null, 2)
+	await fs.writeFile(dataPath, raw, 'utf-8')
 }
