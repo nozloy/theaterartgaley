@@ -14,7 +14,9 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-RUN mkdir -p /app/data
+RUN mkdir -p /app/data && \
+    cp /app/data/event.example.json /app/data/event.json && \
+    chown -R node:node /app/data
 
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/public ./public
