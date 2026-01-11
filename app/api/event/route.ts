@@ -13,6 +13,14 @@ export async function POST(request: Request) {
 		return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 	}
 	delete eventData.password
-	await setServerEvent(eventData)
-	return NextResponse.json({ ok: true })
+	try {
+		await setServerEvent(eventData)
+		return NextResponse.json({ ok: true })
+	} catch (error) {
+		console.error('Failed to save event:', error)
+		return NextResponse.json(
+			{ error: (error as Error).message },
+			{ status: 500 },
+		)
+	}
 }
