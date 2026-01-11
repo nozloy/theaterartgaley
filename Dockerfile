@@ -14,9 +14,11 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-RUN mkdir -p /app/data && \
-    cp /app/data/event.example.json /app/data/event.json && \
-    chown -R node:node /app/data
+# Копируем папку data с event.json из проекта
+COPY ./data ./data
+
+# Даем права Node
+RUN chown -R node:node /app/data
 
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/public ./public
