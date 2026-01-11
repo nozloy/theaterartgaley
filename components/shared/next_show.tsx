@@ -49,6 +49,11 @@ export function NextShow({ className, event }: Props) {
 						{event?.date}
 					</div>
 				</div>
+				<div className='z-20 absolute top-1 left-3'>
+					<div className='flex items-center justify-start w-30 text-xl p-1 text-foreground/70 font-bold'>
+						{event?.time}
+					</div>
+				</div>
 			</div>
 			<div className='w-full h-full flex flex-col pt-1 items-center justify-center gap-1 text-foreground text-xl font-bold'>
 				<Label className='text-xl text-center'>{event?.label}</Label>
