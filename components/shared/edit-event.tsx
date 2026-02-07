@@ -4,11 +4,42 @@ import { Label } from '@/components/ui/label'
 import { Button } from '../ui/button'
 import { Textarea } from '../ui/textarea'
 import { EventData } from '@/lib/server-event'
+import { useState } from 'react'
+import Image from 'next/image'
 
 interface EditEventProps {
 	data: EventData
 }
 export function EditEvent({ data }: EditEventProps) {
+	const [imageUrl, setImageUrl] = useState(data.image)
+	const [uploading, setUploading] = useState(false)
+
+	async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
+		const file = e.target.files?.[0]
+		if (!file) return
+
+		setUploading(true)
+		const formData = new FormData()
+		formData.append('file', file)
+
+		try {
+			const res = await fetch('/api/upload', {
+				method: 'POST',
+				body: formData,
+			})
+
+			if (!res.ok) throw new Error('Upload failed')
+
+			const json = await res.json()
+			setImageUrl(json.url)
+		} catch (error) {
+			alert('Ошибка загрузки изображения')
+			console.error(error)
+		} finally {
+			setUploading(false)
+		}
+	}
+
 	async function handleSubmit(formData: FormData) {
 		const payload = {
 			label: String(formData.get('label')),
@@ -18,7 +49,7 @@ export function EditEvent({ data }: EditEventProps) {
 			kassirUrl: String(formData.get('kassirUrl') ?? ''),
 			mapsUrl: String(formData.get('mapsUrl') ?? ''),
 			description: String(formData.get('description') ?? ''),
-			image: data.image,
+			image: imageUrl,
 			password: String(formData.get('password')),
 		}
 
@@ -47,6 +78,28 @@ export function EditEvent({ data }: EditEventProps) {
 			}}
 		>
 			<div className='flex flex-col gap-6'>
+				<div className='grid gap-2'>
+					<Label>Изображение</Label>
+					<div className='flex items-center gap-4'>
+						{imageUrl && (
+							<div className='relative h-20 w-20 overflow-hidden rounded-md border'>
+								<Image
+									src={imageUrl}
+									alt='Preview'
+									fill
+									className='object-cover'
+								/>
+							</div>
+						)}
+						<Input
+							type='file'
+							accept='image/*'
+							onChange={handleUpload}
+							disabled={uploading}
+						/>
+					</div>
+				</div>
+
 				<div className='grid gap-2'>
 					<Label htmlFor='label'>Название</Label>
 					<Input
@@ -135,8 +188,8 @@ export function EditEvent({ data }: EditEventProps) {
 					/>
 				</div>
 			</div>
-			<Button type='submit' className='mt-4 w-full'>
-				Сохранить изменения
+			<Button type='submit' className='mt-4 w-full' disabled={uploading}>
+				{uploading ? 'Загрузка...' : 'Сохранить изменения'}
 			</Button>
 		</form>
 	)
