@@ -28,12 +28,17 @@ export function EditEvent({ data }: EditEventProps) {
 				body: formData,
 			})
 
-			if (!res.ok) throw new Error('Upload failed')
-
 			const json = await res.json()
+
+			if (!res.ok) {
+				throw new Error(json.error || 'Upload failed')
+			}
+
 			setImageUrl(json.url)
 		} catch (error) {
-			alert('Ошибка загрузки изображения')
+			const msg =
+				error instanceof Error ? error.message : 'Ошибка загрузки изображения'
+			alert(msg)
 			console.error(error)
 		} finally {
 			setUploading(false)
