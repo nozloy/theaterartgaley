@@ -28,12 +28,13 @@ export function EditEvent({ data }: EditEventProps) {
 				body: formData,
 			})
 
-			const json = await res.json()
-
 			if (!res.ok) {
-				throw new Error(json.error || 'Upload failed')
+				const text = await res.text()
+				console.error('Upload failed:', res.status, res.statusText, text)
+				throw new Error(`Upload failed: ${res.status} ${res.statusText}`)
 			}
 
+			const json = await res.json()
 			setImageUrl(json.url)
 		} catch (error) {
 			const msg =
