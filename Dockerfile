@@ -14,15 +14,20 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
+# Install gosu
+RUN apt-get update && apt-get install -y gosu && rm -rf /var/lib/apt/lists/*
+
 # Копируем папку data с event.json из проекта
 COPY ./data ./data
 
-# Даем права Node
-RUN chown -R node:node /app/data
+# Entrypoint script
+COPY docker-entrypoint.sh ./
+RUN chmod +x docker-entrypoint.sh
 
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/static ./.next/static
 
 EXPOSE 3000
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
 CMD ["node", "server.js"]

@@ -12,85 +12,61 @@ interface EditEventProps {
 }
 export function EditEvent({ data }: EditEventProps) {
 	const [imageUrl, setImageUrl] = useState(data.image)
-	const [uploading, setUploading] = useState(false)
+	const [previewUrl, setPreviewUrl] = useState<string | null>(null)
+	const [selectedFile, setSelectedFile] = useState<File | null>(null)
+	const [submitting, setSubmitting] = useState(false)
 
-	async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
+	function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
 		const file = e.target.files?.[0]
-		if (!file) return
-
-		setUploading(true)
-		const formData = new FormData()
-		formData.append('file', file)
-
-		try {
-			const res = await fetch('/api/upload', {
-				method: 'POST',
-				body: formData,
-			})
-
-			if (!res.ok) {
-				const text = await res.text()
-				console.error('Upload failed:', res.status, res.statusText, text)
-				throw new Error(`Upload failed: ${res.status} ${res.statusText}`)
-			}
-
-			const json = await res.json()
-			setImageUrl(json.url)
-		} catch (error) {
-			const msg =
-				error instanceof Error ? error.message : 'Ошибка загрузки изображения'
-			alert(msg)
-			console.error(error)
-		} finally {
-			setUploading(false)
+		if (file) {
+			setSelectedFile(file)
+			setPreviewUrl(URL.createObjectURL(file))
 		}
 	}
 
-	async function handleSubmit(formData: FormData) {
-		const payload = {
-			label: String(formData.get('label')),
-			date: String(formData.get('date')),
-			time: String(formData.get('time') ?? ''),
-			address: String(formData.get('address')),
-			kassirUrl: String(formData.get('kassirUrl') ?? ''),
-			mapsUrl: String(formData.get('mapsUrl') ?? ''),
-			description: String(formData.get('description') ?? ''),
-			image: imageUrl,
-			password: String(formData.get('password')),
+	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault()
+		setSubmitting(true)
+		const formData = new FormData(e.currentTarget)
+
+		// Append file if selected
+		if (selectedFile) {
+			formData.set('file', selectedFile)
 		}
+		// Ensure current image is kept if no new file
+		formData.set('image', imageUrl)
 
 		try {
 			const res = await fetch('/api/event', {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(payload),
+				body: formData, // Send FormData directly
 			})
 
 			if (!res.ok) {
-				alert('Ошибка сохранения события')
-				return
+				const json = await res.json()
+				throw new Error(json.error || 'Ошибка сохранения события')
 			}
+			
 			alert('Событие успешно сохранено!')
+			// Ideally refresh or redirect here
 		} catch (e) {
-			alert('Ошибка: ' + (e as Error).message)
+			const msg = e instanceof Error ? e.message : 'Unknown error'
+			alert('Ошибка: ' + msg)
+		} finally {
+			setSubmitting(false)
 		}
 	}
+
 	return (
-		<form
-			className='p-4'
-			onSubmit={e => {
-				e.preventDefault()
-				handleSubmit(new FormData(e.currentTarget))
-			}}
-		>
+		<form className='p-4' onSubmit={handleSubmit}>
 			<div className='flex flex-col gap-6'>
 				<div className='grid gap-2'>
 					<Label>Изображение</Label>
 					<div className='flex items-center gap-4'>
-						{imageUrl && (
+						{(previewUrl || imageUrl) && (
 							<div className='relative h-20 w-20 overflow-hidden rounded-md border'>
 								<Image
-									src={imageUrl}
+									src={previewUrl || imageUrl}
 									alt='Preview'
 									fill
 									className='object-cover'
@@ -100,8 +76,8 @@ export function EditEvent({ data }: EditEventProps) {
 						<Input
 							type='file'
 							accept='image/*'
-							onChange={handleUpload}
-							disabled={uploading}
+							onChange={handleFileChange}
+							name="file" // Name it 'file' but we handle it manually too to be safe/explicit or just rely on form
 						/>
 					</div>
 				</div>
@@ -194,8 +170,8 @@ export function EditEvent({ data }: EditEventProps) {
 					/>
 				</div>
 			</div>
-			<Button type='submit' className='mt-4 w-full' disabled={uploading}>
-				{uploading ? 'Загрузка...' : 'Сохранить изменения'}
+			<Button type='submit' className='mt-4 w-full' disabled={submitting}>
+				{submitting ? 'Сохранение...' : 'Сохранить изменения'}
 			</Button>
 		</form>
 	)

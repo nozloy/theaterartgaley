@@ -45,12 +45,12 @@ export function NextShow({ className, event }: Props) {
 				</div>
 
 				<div className='z-20 absolute top-1 right-3'>
-					<div className='flex items-center justify-end w-30 text-xl p-1 text-foreground/70 font-bold text-shadow-sm text-shadow-black'>
+					<div className='flex items-center justify-end w-32 text-xl p-1 text-foreground/70 font-bold text-shadow-sm text-shadow-black'>
 						{event?.date}
 					</div>
 				</div>
 				<div className='z-20 absolute top-1 left-3'>
-					<div className='flex items-center justify-start w-30 text-xl p-1 text-foreground/70 font-bold text-shadow-sm text-shadow-black'>
+					<div className='flex items-center justify-start w-32 text-xl p-1 text-foreground/70 font-bold text-shadow-sm text-shadow-black'>
 						{event?.time}
 					</div>
 				</div>
