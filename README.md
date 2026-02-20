@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Theater ARTGaley
 
-## Getting Started
+Next.js 16 + React 19 project for theater events, tickets and admin management.
 
-First, run the development server:
+## Local run
 
 ```bash
+npm ci
+cp .env.example .env
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## SEO / GEO / AI readiness
 
-To learn more about Next.js, take a look at the following resources:
+Implemented:
+- global metadata with canonical + OpenGraph + Twitter cards
+- `robots.txt` and `sitemap.xml` generation via App Router metadata routes
+- `manifest.webmanifest`
+- JSON-LD (`TheaterGroup`, `WebSite`, `Event`) on the home page
+- `llms.txt` route at `/llms.txt` for AI crawlers
+- noindex for private/admin auth routes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy to Coolify
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Project is ready for Dockerfile deploy mode.
 
-## Deploy on Vercel
+1. Create new Coolify service from this repository.
+2. Build pack: `Dockerfile`.
+3. Port: `3000`.
+4. Add environment variables from `.env.example`.
+5. Set domain and enable HTTPS.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Notes:
+- Image includes healthcheck on `http://127.0.0.1:3000`.
+- Uses Next.js standalone output for smaller runtime image.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Required environment variables
+
+Use `.env.example` as source of truth.
+
+Critical:
+- `POSTGRESQL_HOST`, `POSTGRESQL_PORT`, `POSTGRESQL_USER`, `POSTGRESQL_PASSWORD`, `POSTGRESQL_DBNAME`
+- `BETTER_AUTH_SECRET`, `BASE_URL`, `BETTER_AUTH_TRUSTED_ORIGINS`
+- `YANDEX_CLIENT_ID`, `YANDEX_CLIENT_SECRET`
+- `S3_ENDPOINT_URL`, `S3_ACCESS_KEY`, `S3_SECRET_KEY`, `S3_REGION_NAME`, `S3_BUCKET_NAME`
+
+Optional:
+- `PUBLIC_YANDEX_METRICA`
+- `NEXT_PUBLIC_SITE_URL`

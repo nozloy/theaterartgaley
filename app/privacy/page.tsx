@@ -1,3 +1,14 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+	title: 'Политика обработки персональных данных',
+	description:
+		'Политика обработки персональных данных сайта театра АРТГалей: состав данных, цели обработки, правовые основания и контакты оператора.',
+	alternates: {
+		canonical: '/privacy',
+	},
+}
+
 const POLICY_UPDATED_AT = '20 февраля 2026 года'
 const OPERATOR_NAME = 'Индивидуальный предприниматель Галеев Артур Радикович'
 const OPERATOR_INN = '027410843056'
@@ -116,19 +127,19 @@ export default function PrivacyPage() {
 						<h2 className='text-sm uppercase tracking-[0.18em] text-[#d4af37]'>
 							Нормативная база (РФ)
 						</h2>
-							<ul className='mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-300 marker:text-[#d4af37]'>
-								<li>
-									Федеральный закон от 27.07.2006 № 152-ФЗ «О персональных данных»
-									(ред. от 24.06.2025).
-								</li>
-								<li>
-									Политика размещается в открытом доступе в сети Интернет в
-									соответствии с ч. 2 ст. 18.1 152-ФЗ.
-								</li>
-								<li>
-									С 01.09.2025 действует правило о том, что согласие на обработку
-									ПД должно оформляться отдельно от иных документов
-									(Федеральный закон от 24.06.2025 № 156-ФЗ).
+						<ul className='mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-300 marker:text-[#d4af37]'>
+							<li>
+								Федеральный закон от 27.07.2006 № 152-ФЗ «О персональных данных»
+								(ред. от 24.06.2025).
+							</li>
+							<li>
+								Политика размещается в открытом доступе в сети Интернет в
+								соответствии с ч. 2 ст. 18.1 152-ФЗ.
+							</li>
+							<li>
+								С 01.09.2025 действует правило о том, что согласие на обработку
+								ПД должно оформляться отдельно от иных документов
+								(Федеральный закон от 24.06.2025 № 156-ФЗ).
 							</li>
 							<li>
 								Постановление Правительства РФ от 01.11.2012 № 1119
@@ -195,7 +206,7 @@ export default function PrivacyPage() {
 						Цели и правовые основания обработки
 					</h2>
 					<div className='mt-4 space-y-3 md:hidden'>
-						{processingRows.map(row => (
+						{processingRows.map((row) => (
 							<article
 								key={row.purpose}
 								className='rounded-xl border border-white/10 bg-black/35 p-4'
@@ -261,132 +272,52 @@ export default function PrivacyPage() {
 
 				<section className='mt-6 rounded-2xl border border-white/10 bg-black/30 p-5 sm:p-6'>
 					<h2 className='text-sm uppercase tracking-[0.18em] text-[#d4af37]'>
-						Cookie, аналитика и внешние сервисы
-					</h2>
-					<ul className='mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-300 marker:text-[#d4af37]'>
-						<li>
-							Сайт использует cookie и сервис веб-аналитики Яндекс.Метрика.
-						</li>
-						<li>
-							Пользователь может запретить cookie в настройках браузера; это может
-							повлиять на корректность работы отдельных функций сайта.
-						</li>
-						<li>
-							Ссылки на внешние площадки (например, билетные сервисы, Telegram,
-							VK, WhatsApp) ведут к самостоятельным операторам данных, которые
-							обрабатывают сведения по своим правилам.
-						</li>
-						<li>
-							При планировании трансграничной передачи ПД оператор применяет
-							требования ст. 12 152-ФЗ.
-						</li>
-					</ul>
-				</section>
-
-				<section className='mt-6 rounded-2xl border border-white/10 bg-black/30 p-5 sm:p-6'>
-					<h2 className='text-sm uppercase tracking-[0.18em] text-[#d4af37]'>
-						Локализация и защита персональных данных
-					</h2>
-					<ul className='mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-300 marker:text-[#d4af37]'>
-						<li>
-							Оператор организует обработку ПД с учетом требований ч. 5 ст. 18
-							152-ФЗ (локализация баз данных при сборе ПД граждан РФ через
-							интернет).
-						</li>
-						<li>
-							Применяются организационные и технические меры безопасности в
-							соответствии со ст. 19 152-ФЗ и Постановлением Правительства РФ
-							№ 1119.
-						</li>
-						<li>
-							Доступ к данным предоставляется только уполномоченным лицам в
-							объеме, необходимом для выполнения задач.
-						</li>
-					</ul>
-				</section>
-
-				<section className='mt-6 rounded-2xl border border-white/10 bg-black/30 p-5 sm:p-6'>
-					<h2 className='text-sm uppercase tracking-[0.18em] text-[#d4af37]'>
 						Права субъекта персональных данных
 					</h2>
 					<ul className='mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-300 marker:text-[#d4af37]'>
-						<li>Получать сведения об обработке своих персональных данных.</li>
-						<li>Требовать уточнения, блокирования или уничтожения данных.</li>
+						<li>Получать сведения об обработке и требовать уточнения данных.</li>
+						<li>Требовать блокирования или уничтожения данных при наличии оснований.</li>
 						<li>Отозвать согласие на обработку персональных данных.</li>
-						<li>Обжаловать действия оператора в Роскомнадзор или в суд.</li>
+						<li>
+							Обжаловать действия/бездействие оператора в Роскомнадзор или суд.
+						</li>
 					</ul>
+				</section>
+
+				<section className='mt-6 rounded-2xl border border-white/10 bg-black/30 p-5 sm:p-6'>
+					<h2 className='text-sm uppercase tracking-[0.18em] text-[#d4af37]'>
+						Трансграничная передача и локализация
+					</h2>
 					<p className='mt-4 text-sm leading-relaxed text-slate-300'>
-						Запросы направляются на{' '}
+						При необходимости трансграничной передачи оператор соблюдает требования
+						законодательства РФ, включая оценку мер защиты и правомерности
+						передачи. Первичная запись и систематизация персональных данных
+						граждан РФ осуществляется на территории РФ в соответствии с
+						требованиями о локализации.
+					</p>
+				</section>
+
+				<section className='mt-6 rounded-2xl border border-white/10 bg-black/30 p-5 sm:p-6'>
+					<h2 className='text-sm uppercase tracking-[0.18em] text-[#d4af37]'>
+						Контакты и обращения
+					</h2>
+					<p className='mt-4 text-sm leading-relaxed text-slate-300'>
+						По вопросам обработки персональных данных и реализации прав субъекта
+						направляйте обращения на{' '}
 						<a
 							href={`mailto:${OPERATOR_EMAIL}`}
 							className='underline decoration-white/35 underline-offset-4'
 						>
 							{OPERATOR_EMAIL}
 						</a>
-						. Срок ответа на запрос субъекта, как правило, составляет 10 рабочих
-						дней с возможностью продления не более чем на 5 рабочих дней в
-						случаях, предусмотренных законом. При отзыве согласия обработка
-						прекращается в сроки, установленные 152-ФЗ, если отсутствуют иные
-						законные основания для продолжения обработки.
+						. Оператор рассматривает обращения в сроки, установленные
+						законодательством РФ.
 					</p>
-				</section>
-
-				<section className='mt-6 rounded-2xl border border-white/10 bg-black/30 p-5 sm:p-6'>
-					<h2 className='text-sm uppercase tracking-[0.18em] text-[#d4af37]'>
-						Публикация и изменения политики
-					</h2>
-					<p className='mt-4 text-sm leading-relaxed text-slate-300'>
-						Политика опубликована в свободном доступе по адресу{' '}
-						<a
-							href={`${SITE_URL}/privacy`}
-							target='_blank'
-							rel='noreferrer'
-							className='underline decoration-white/35 underline-offset-4'
-						>
-							{SITE_URL}/privacy
-						</a>
-						. Оператор вправе обновлять документ при изменении законодательства
-						или бизнес-процессов обработки данных. Новая редакция вступает в силу
-						с момента публикации.
+					<p className='mt-4 text-xs leading-relaxed text-slate-400'>
+						Ссылки на нормативные акты: <ExternalLawLink href='https://www.consultant.ru/document/cons_doc_LAW_61801/'>152-ФЗ</ExternalLawLink>,{' '}
+						<ExternalLawLink href='https://www.consultant.ru/document/cons_doc_LAW_61798/'>149-ФЗ</ExternalLawLink>,{' '}
+						<ExternalLawLink href='https://www.consultant.ru/document/cons_doc_LAW_137356/'>ПП РФ №1119</ExternalLawLink>.
 					</p>
-				</section>
-
-				<section className='mt-6 rounded-2xl border border-white/10 bg-black/30 p-5 sm:p-6'>
-					<h2 className='text-sm uppercase tracking-[0.18em] text-[#d4af37]'>
-						Ключевые правовые ссылки
-					</h2>
-					<ul className='mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-300 marker:text-[#d4af37]'>
-						<li>
-							<ExternalLawLink href='https://www.consultant.ru/document/cons_doc_LAW_61801/'>
-								152-ФЗ «О персональных данных»
-							</ExternalLawLink>
-						</li>
-						<li>
-							<ExternalLawLink href='https://www.consultant.ru/document/cons_doc_LAW_156525/0e39084ac80d38f59f4b3e2423ca6d8f1fe5f35f/'>
-								ч. 5 ст. 18 152-ФЗ (локализация баз данных)
-							</ExternalLawLink>
-						</li>
-						<li>
-							<ExternalLawLink href='https://www.consultant.ru/document/cons_doc_LAW_61801/d5d1202f3f28620bc3f92f23100f2f7bfc8c9f22/'>
-								ст. 12 152-ФЗ (трансграничная передача)
-							</ExternalLawLink>
-						</li>
-						<li>
-							<ExternalLawLink href='https://www.consultant.ru/document/cons_doc_LAW_61801/c1e5d162f58f166ac2c4ca6f1ef0427b8c042154/'>
-								ст. 21 152-ФЗ (обязанности оператора при обращениях субъекта)
-							</ExternalLawLink>
-						</li>
-						<li>
-							<ExternalLawLink href='https://www.consultant.ru/document/cons_doc_LAW_378917/8166f67e81d3c17f93d1f6f8afaf84f5f638f9e4/'>
-								Федеральный закон № 156-ФЗ от 24.06.2025
-							</ExternalLawLink>
-						</li>
-						<li>
-							<ExternalLawLink href='https://www.consultant.ru/document/cons_doc_LAW_137356/'>
-								Постановление Правительства РФ № 1119 от 01.11.2012
-							</ExternalLawLink>
-						</li>
-					</ul>
 				</section>
 			</div>
 		</main>

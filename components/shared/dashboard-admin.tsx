@@ -74,20 +74,31 @@ export function DashboardAdmin({
 	return (
 		<div className='space-y-4'>
 			<div className='rounded-xl border border-white/10 bg-black/40 p-4 shadow-xl backdrop-blur'>
-				<div className='flex flex-wrap items-start justify-between gap-3'>
-					<div className='flex items-center gap-3'>
+				<div className='flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between'>
+					<div className='flex min-w-0 items-center gap-3'>
 						<Avatar className='h-11 w-11 border border-white/20'>
 							<AvatarFallback>{initials}</AvatarFallback>
 						</Avatar>
-						<div className='space-y-1'>
-							<div className='text-xl font-semibold'>Панель администратора</div>
-							<div className='text-sm text-foreground/70'>
-								{userName ?? 'Администратор'}
-								{userEmail ? ` · ${userEmail}` : ''}
+						<div className='min-w-0 space-y-1'>
+							<div className='text-xl font-semibold sm:text-2xl'>
+								Панель администратора
+							</div>
+							<div className='min-w-0 text-sm text-foreground/70'>
+								<div className='truncate'>{userName ?? 'Администратор'}</div>
+								{userEmail ? (
+									<div className='break-all text-xs text-foreground/60 sm:text-sm'>
+										{userEmail}
+									</div>
+								) : null}
 							</div>
 						</div>
 					</div>
-					<Button type='button' variant='outline' onClick={handleSignOut}>
+					<Button
+						type='button'
+						variant='outline'
+						onClick={handleSignOut}
+						className='w-full sm:w-auto'
+					>
 						<LogOut />
 						Выйти
 					</Button>
@@ -99,14 +110,27 @@ export function DashboardAdmin({
 				onValueChange={(value) => setActiveTab(value as AdminTab)}
 				className='w-full'
 			>
-				<TabsList className='sticky top-2 z-20 grid h-auto w-full grid-cols-3 rounded-xl border border-white/10 bg-black/60 p-1 backdrop-blur sm:max-w-2xl'>
-					<TabsTrigger value='create' className='h-10 text-sm sm:text-base'>
-						Добавить мероприятие
+				<TabsList className='sticky top-2 z-20 grid h-auto w-full grid-cols-3 rounded-xl border border-white/10 bg-black/60 p-1 backdrop-blur'>
+					<TabsTrigger
+						value='create'
+						aria-label='Добавить мероприятие'
+						className='h-11 w-full min-w-0 whitespace-normal px-1 text-center text-xs leading-tight sm:h-10 sm:whitespace-nowrap sm:px-3 sm:text-sm'
+					>
+						<span className='sm:hidden'>Добавить</span>
+						<span className='hidden sm:inline'>Добавить мероприятие</span>
 					</TabsTrigger>
-					<TabsTrigger value='all' className='h-10 text-sm sm:text-base'>
-						Весь список
+					<TabsTrigger
+						value='all'
+						aria-label='Весь список мероприятий'
+						className='h-11 w-full min-w-0 whitespace-normal px-1 text-center text-xs leading-tight sm:h-10 sm:whitespace-nowrap sm:px-3 sm:text-sm'
+					>
+						<span className='sm:hidden'>Список</span>
+						<span className='hidden sm:inline'>Весь список</span>
 					</TabsTrigger>
-					<TabsTrigger value='users' className='h-10 text-sm sm:text-base'>
+					<TabsTrigger
+						value='users'
+						className='h-11 w-full min-w-0 whitespace-normal px-1 text-center text-xs leading-tight sm:h-10 sm:whitespace-nowrap sm:px-3 sm:text-sm'
+					>
 						Пользователи
 					</TabsTrigger>
 				</TabsList>

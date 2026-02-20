@@ -5,7 +5,10 @@ const s3Url = new URL(s3Endpoint)
 
 const nextConfig: NextConfig = {
 	output: 'standalone',
+	compress: true,
+	poweredByHeader: false,
 	images: {
+		formats: ['image/avif', 'image/webp'],
 		remotePatterns: [
 			{
 				protocol: s3Url.protocol.replace(':', '') as 'http' | 'https',

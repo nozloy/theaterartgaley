@@ -1,9 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
-import './globals.css'
 import Script from 'next/script'
+import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
+import {
+	DEFAULT_OG_IMAGE,
+	SITE_DESCRIPTION,
+	SITE_KEYWORDS,
+	SITE_NAME,
+	SITE_URL,
+} from '@/modules/seo/config'
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -16,31 +23,43 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-	title: 'Театр АРТГалей – Современные спектакли в Анталии и Казани',
-	description:
-		'Театральная труппа АРТГалей: премьеры, гастроли, закулисье. Билеты онлайн. Актуальный репертуар и уникальные постановки в Анталии и Казани.',
-	keywords: [
-		'театр',
-		'спектакли',
-		'АРТГалей',
-		'Анталия',
-		'Казань',
-		'купить билеты',
-		'современный театр',
-	],
-	robots: 'index, follow',
+	metadataBase: new URL(SITE_URL),
+	title: {
+		default: `${SITE_NAME} - Современные спектакли в Анталье и Казани`,
+		template: `%s | ${SITE_NAME}`,
+	},
+	description: SITE_DESCRIPTION,
+	keywords: SITE_KEYWORDS,
+	category: 'theater',
+	applicationName: SITE_NAME,
+	alternates: {
+		canonical: '/',
+		languages: {
+			'ru-RU': '/',
+		},
+	},
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+			'max-image-preview': 'large',
+			'max-snippet': -1,
+			'max-video-preview': -1,
+		},
+	},
 	openGraph: {
-		title: 'Театр АРТГалей – Современные спектакли в Анталии и Казани',
-		description:
-			'Погрузитесь в мир театра с АРТГалей. Узнайте о предстоящих спектаклях и приобретите билеты онлайн.',
-		url: 'https://theaterartgaley.fun',
-		siteName: 'АРТГалей',
+		title: `${SITE_NAME} - Современные спектакли в Анталье и Казани`,
+		description: SITE_DESCRIPTION,
+		url: SITE_URL,
+		siteName: SITE_NAME,
 		images: [
 			{
-				url: 'https://theaterartgaley.fun/og-image.jpg',
+				url: DEFAULT_OG_IMAGE,
 				width: 1200,
 				height: 630,
-				alt: 'Афиша спектакля АРТГалей',
+				alt: 'Афиша театра АРТГалей',
 			},
 		],
 		locale: 'ru_RU',
@@ -48,14 +67,14 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: 'Театр АРТГалей – Современные спектакли в Анталии и Казани',
-		description:
-			'Откройте для себя уникальные постановки театра АРТГалей. Билеты доступны онлайн.',
-		creator: '@artgaley',
-		images: ['https://theaterartgaley.fun/og-image.jpg'],
+		title: `${SITE_NAME} - Современные спектакли в Анталье и Казани`,
+		description: SITE_DESCRIPTION,
+		images: [DEFAULT_OG_IMAGE],
 	},
-	alternates: {
-		canonical: 'https://theaterartgaley.fun',
+	other: {
+		'geo.region': 'RU-TA',
+		'geo.placename': 'Kazan; Antalya',
+		ICBM: '55.7961,49.1064',
 	},
 }
 
@@ -68,9 +87,7 @@ export default function RootLayout({
 
 	return (
 		<html lang='ru' suppressHydrationWarning>
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-			>
+			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 				{yandexMetricaId ? (
 					<>
 						<Script

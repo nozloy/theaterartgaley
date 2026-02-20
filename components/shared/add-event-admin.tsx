@@ -418,7 +418,11 @@ export function AddEventAdmin({ onSaved, draftEvent, draftMode }: AddEventAdminP
 						)}
 
 						<div className='flex items-center justify-end'>
-							<Button type='submit' disabled={submitting} className='min-w-56'>
+							<Button
+								type='submit'
+								disabled={submitting}
+								className='w-full sm:w-auto sm:min-w-56'
+							>
 								<Save />
 								{submitLabel}
 							</Button>
@@ -428,6 +432,71 @@ export function AddEventAdmin({ onSaved, draftEvent, draftMode }: AddEventAdminP
 			</form>
 
 			<div className='space-y-4 lg:sticky lg:top-4 lg:self-start'>
+				<Card className='overflow-hidden border-white/10 bg-black/40 shadow-xl backdrop-blur'>
+					<CardHeader className='space-y-2'>
+						<div className='flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between'>
+							<CardTitle className='min-w-0 text-base'>Изображения из S3/events</CardTitle>
+							<Button
+								type='button'
+								variant='outline'
+								size='sm'
+								onClick={loadLibrary}
+								disabled={loadingLibrary}
+								className='w-full justify-center sm:w-auto'
+							>
+								{loadingLibrary ? <Loader2 className='animate-spin' /> : <RefreshCcw />}
+								Обновить
+							</Button>
+						</div>
+						<CardDescription>{libraryTitle}</CardDescription>
+					</CardHeader>
+					<CardContent className='space-y-2'>
+						<div className='max-h-[320px] space-y-2 overflow-x-hidden overflow-y-auto pr-1'>
+							{library.map((file, index) => {
+								const selected = form.image === file.url && !selectedFile
+								return (
+									<button
+										key={file.key}
+										type='button'
+										onClick={() => selectLibraryImage(file.url)}
+										className={cn(
+											'w-full overflow-hidden rounded-lg border p-2 text-left transition-colors',
+											selected
+												? 'border-emerald-400/50 bg-emerald-500/10'
+												: 'border-white/10 bg-black/30 hover:bg-black/50',
+										)}
+									>
+										<div className='flex min-w-0 gap-2'>
+											<div className='relative h-16 w-12 shrink-0 overflow-hidden rounded border border-white/10 bg-black/40'>
+												<Image
+													src={file.url}
+													alt={file.key}
+													fill
+													className='pointer-events-none object-cover'
+												/>
+											</div>
+												<div className='min-w-0'>
+													<div className='text-xs font-medium text-foreground/80'>
+														Изображение {index + 1}
+													</div>
+													<div className='text-[11px] text-foreground/60'>
+														{file.lastModified ?? 'Дата неизвестна'}
+													</div>
+												</div>
+											</div>
+										</button>
+								)
+							})}
+
+							{libraryLoaded && library.length === 0 && (
+								<div className='rounded-lg border border-white/10 p-3 text-sm text-foreground/60'>
+									В папке `events` пока нет изображений.
+								</div>
+							)}
+						</div>
+					</CardContent>
+				</Card>
+
 				<Card className='border-white/10 bg-black/40 shadow-xl backdrop-blur'>
 					<CardHeader className='space-y-2'>
 						<CardTitle className='text-base'>Предпросмотр</CardTitle>
@@ -456,70 +525,6 @@ export function AddEventAdmin({ onSaved, draftEvent, draftMode }: AddEventAdminP
 						<div className='space-y-2'>
 							<Badge variant='outline'>{form.label || 'Без названия'}</Badge>
 							<Badge variant='outline'>{form.startsAt || 'Дата не выбрана'}</Badge>
-						</div>
-					</CardContent>
-				</Card>
-
-				<Card className='border-white/10 bg-black/40 shadow-xl backdrop-blur'>
-					<CardHeader className='space-y-2'>
-						<div className='flex items-center justify-between gap-2'>
-							<CardTitle className='text-base'>Изображения из S3/events</CardTitle>
-							<Button
-								type='button'
-								variant='outline'
-								size='sm'
-								onClick={loadLibrary}
-								disabled={loadingLibrary}
-							>
-								{loadingLibrary ? <Loader2 className='animate-spin' /> : <RefreshCcw />}
-								Обновить
-							</Button>
-						</div>
-						<CardDescription>{libraryTitle}</CardDescription>
-					</CardHeader>
-					<CardContent className='space-y-2'>
-						<div className='max-h-[320px] space-y-2 overflow-y-auto pr-1'>
-							{library.map((file) => {
-								const selected = form.image === file.url && !selectedFile
-								return (
-									<button
-										key={file.key}
-										type='button'
-										onClick={() => selectLibraryImage(file.url)}
-										className={cn(
-											'w-full rounded-lg border p-2 text-left transition-colors',
-											selected
-												? 'border-emerald-400/50 bg-emerald-500/10'
-												: 'border-white/10 bg-black/30 hover:bg-black/50',
-										)}
-									>
-										<div className='flex gap-2'>
-											<div className='relative h-16 w-12 shrink-0 overflow-hidden rounded border border-white/10 bg-black/40'>
-												<Image
-													src={file.url}
-													alt={file.key}
-													fill
-													className='pointer-events-none object-cover'
-												/>
-											</div>
-											<div className='min-w-0'>
-												<div className='truncate text-xs font-medium text-foreground/80'>
-													{file.key}
-												</div>
-												<div className='text-[11px] text-foreground/60'>
-													{file.lastModified ?? '—'}
-												</div>
-											</div>
-										</div>
-									</button>
-								)
-							})}
-
-							{libraryLoaded && library.length === 0 && (
-								<div className='rounded-lg border border-white/10 p-3 text-sm text-foreground/60'>
-									В папке `events` пока нет изображений.
-								</div>
-							)}
 						</div>
 					</CardContent>
 				</Card>
