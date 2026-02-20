@@ -1,5 +1,8 @@
+# Use Google's Docker Hub mirror to avoid unauthenticated pull rate limits in CI/CD.
+ARG NODE_IMAGE=mirror.gcr.io/library/node:20-bookworm-slim
+
 # 1 - Builder
-FROM node:20-bookworm-slim AS builder
+FROM ${NODE_IMAGE} AS builder
 WORKDIR /app
 
 COPY package*.json ./
@@ -9,7 +12,7 @@ COPY . .
 RUN npm run build
 
 # 2 - Runner
-FROM node:20-bookworm-slim AS runner
+FROM ${NODE_IMAGE} AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
