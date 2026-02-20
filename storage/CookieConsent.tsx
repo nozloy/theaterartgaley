@@ -8,7 +8,11 @@ export default function CookieConsent() {
 
 	useEffect(() => {
 		const accepted = localStorage.getItem('cookie-accepted')
-		if (!accepted) setVisible(true)
+		if (!accepted) {
+			// One-time visibility sync with persisted consent on initial mount.
+			// eslint-disable-next-line react-hooks/set-state-in-effect
+			setVisible(true)
+		}
 	}, [])
 
 	const acceptCookies = () => {
