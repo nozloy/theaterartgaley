@@ -1,5 +1,5 @@
 # Use Google's Docker Hub mirror to avoid unauthenticated pull rate limits in CI/CD.
-ARG NODE_IMAGE=mirror.gcr.io/library/node:20-bookworm-slim
+ARG NODE_IMAGE=public.ecr.aws/docker/library/node:20-bookworm-slim
 
 # 1 - Builder
 FROM ${NODE_IMAGE} AS builder
@@ -8,6 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
 
@@ -16,13 +17,13 @@ FROM ${NODE_IMAGE} AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
 
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/static ./.next/static
 
+USER node
 EXPOSE 3000
-HEALTHCHECK --interval=30s --timeout=10s --start-period=45s --retries=3 \
-  CMD node -e "fetch('http://127.0.0.1:3000/llms.txt').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
 CMD ["node", "server.js"]
