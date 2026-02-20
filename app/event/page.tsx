@@ -1,12 +1,6 @@
-import { EditEvent } from '@/components/shared/edit-event'
-import { EventData, getServerEvent } from '@/lib/server-event'
+import { redirect } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
-export default async function Event() {
-	const currentEvent: EventData = await getServerEvent()
-	return (
-		<div>
-			<EditEvent data={currentEvent} />
-		</div>
-	)
+export default function Event() {
+	redirect('/dashboard')
 }

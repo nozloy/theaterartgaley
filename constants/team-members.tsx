@@ -1,4 +1,10 @@
 import { TeamMember } from '@/types/team'
+import alexanderGalimovAvatar from '@/public/images/avatars/alexander_galimov.png'
+import devyatovaEkaterinaAvatar from '@/public/images/avatars/devyatova_ekaterina.png'
+import artemLulinAvatar from '@/public/images/avatars/artem_lulin.png'
+import fanzilFattakhovAvatar from '@/public/images/avatars/fanzil_fattakhov.png'
+import vladimirTsigvintsevAvatar from '@/public/images/avatars/vladimir_tsigvintsev.png'
+import asyaDonmezAvatar from '@/public/images/avatars/asya_donmez.png'
 
 export const teamMembers: TeamMember[] = [
 	{
@@ -12,7 +18,7 @@ export const teamMembers: TeamMember[] = [
 			'Гран-при фестиваля Theatertreffen',
 		],
 		education: [],
-		avatar: 'alexander_galimov.png',
+		avatar: alexanderGalimovAvatar.src,
 	},
 	{
 		id: 'devyatova-ekaterina',
@@ -20,7 +26,7 @@ export const teamMembers: TeamMember[] = [
 		roles: ['Фотомодель', 'Актриса', 'Педагог'],
 		experience: ['Съёмки в рекламе', 'Иммерсивный спектакль «ПАРА»'],
 		education: [],
-		avatar: 'devyatova_ekaterina.png',
+		avatar: devyatovaEkaterinaAvatar.src,
 	},
 	{
 		id: 'artyom-lyulin',
@@ -31,7 +37,7 @@ export const teamMembers: TeamMember[] = [
 			'Выпускник Казанского театрального училища',
 			'Мастерская Т.В. Лядовой',
 		],
-		avatar: 'artem_lulin.jpg',
+		avatar: artemLulinAvatar.src,
 	},
 	{
 		id: 'fanzil-fattakhov',
@@ -43,7 +49,7 @@ export const teamMembers: TeamMember[] = [
 			'Спектакли: Сон в летнюю ночь, Падение в Аид, Изнанка стиральной машинки',
 		],
 		education: [],
-		avatar: 'fanzil_fattakhov.png',
+		avatar: fanzilFattakhovAvatar.src,
 	},
 	{
 		id: 'vladimir-tsigvintsev',
@@ -67,7 +73,7 @@ export const teamMembers: TeamMember[] = [
 			'Великолепная пятерка (2020, Миша)',
 		],
 		education: ['2011 — окончил курс ЗА России Самочко Михаила Ивановича'],
-		avatar: 'vladimir_tsigvintsev.png',
+		avatar: vladimirTsigvintsevAvatar.src,
 	},
 	{
 		id: 'asya-donmez',
@@ -75,6 +81,6 @@ export const teamMembers: TeamMember[] = [
 		roles: ['Актриса', 'Фотомодель'],
 		experience: ['Спектакли Анталийских театров', 'Реклама'],
 		education: [],
-		avatar: 'asya_donmez.png',
+		avatar: asyaDonmezAvatar.src,
 	},
 ]
