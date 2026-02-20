@@ -11,8 +11,6 @@ services:
     environment:
       NODE_ENV: production
       PORT: 3000
-      # App falls back to POSTGRESQL_* when DATABASE_URL is empty.
-      DATABASE_URL: ${DATABASE_URL:-}
       POSTGRESQL_HOST: db
       POSTGRESQL_PORT: 5432
     depends_on:
