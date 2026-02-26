@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import Script from 'next/script'
@@ -111,6 +110,8 @@ export default function RootLayout({
 						/>
 						<noscript>
 							<div>
+								{/* Yandex Metrica requires a raw tracking pixel in noscript fallback. */}
+								{/* eslint-disable-next-line @next/next/no-img-element */}
 								<img
 									src={`https://mc.yandex.ru/watch/${yandexMetricaId}`}
 									className='pointer-events-none'
